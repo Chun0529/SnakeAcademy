@@ -1,0 +1,966 @@
+{
+  "gatheringSpots": [
+    {
+      "id": 1,
+      "name": "水晶蘑菇",
+      "type": "Crystal Mushroom",
+      "use": "可用於基礎藥劑、料理與部分魔法配方。",
+      "location": "地圖活米村上方墓園處",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Crystal_Mushroom.webp",
+      "mapImage": "/manus-storage/gathering-1-map_8d36db04.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/mushroom.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/mushroom-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 2,
+      "name": "魔力泉水",
+      "type": "Magical Spring Water",
+      "use": "可用於基礎藥劑、料理與部分魔法配方。",
+      "location": "地圖活米村左上側森林處",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Magical_Spring_Water.webp",
+      "mapImage": "/manus-storage/gathering-2-map_b2d5d66b.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/water.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/water-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 3,
+      "name": "魔法之花",
+      "type": "Magic Flower",
+      "use": "可用於基礎藥劑、料理與部分魔法配方。",
+      "location": "地圖活米村右下側公園處(有個恐龍)",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Magic_Flower.webp",
+      "mapImage": "/manus-storage/gathering-3-map_fb77bf46.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/flower.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/flower-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 4,
+      "name": "妖精花粉",
+      "type": "Fairy Pollen",
+      "use": "可用於基礎藥劑、料理與部分魔法配方。",
+      "location": "霍格華茲正門噴水池",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Fairy_Pollen.webp",
+      "mapImage": "/manus-storage/gathering-4-map_6c070bd3.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/pollen.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/pollen-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 5,
+      "name": "龍血藤",
+      "type": "Dragon Blood",
+      "use": "未知。",
+      "location": "地圖魁地奇球場右上方",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Dragon_Blood.webp",
+      "mapImage": "/manus-storage/gathering-5-map_84047b04.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/blood.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/blood-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 6,
+      "name": "蜂王蜜",
+      "type": "Honey",
+      "use": "未知。",
+      "location": "活米村北方",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Honey.webp",
+      "mapImage": "/manus-storage/gathering-6-map_fd5bdfa2.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/honey.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/honey-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 7,
+      "name": "水晶花",
+      "type": "Crystal Flower",
+      "use": "未知。",
+      "location": "花園",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/Ice-Flower.webp",
+      "mapImage": "/manus-storage/gathering-7-map_b55aac11.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/ice-flower.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/ice-flower-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 8,
+      "name": "尖叫草藥",
+      "type": "Scream Flower",
+      "use": "未知。",
+      "location": "很南方的巨石陣",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/scream.webp",
+      "mapImage": "/manus-storage/gathering-8-map_0d03c562.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/scream.webp",
+      "mapSource": "https://xiang1224.github.io/SnakeAcademy/images/map/scream-map.webp",
+      "mapAvailable": true,
+      "mapWidth": 600,
+      "mapHeight": 337
+    },
+    {
+      "id": 9,
+      "name": "怪物精華",
+      "type": "Monster Essence",
+      "use": "擊敗怪物後掉落，可用於各類藥水合成。",
+      "location": "目前可用其他材料與教授1:1兌換",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/marrow.webp",
+      "mapImage": "https://xiang1224.github.io/SnakeAcademy/images/map/monster-essence-map.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/monster-essence.webp",
+      "mapAvailable": false
+    },
+    {
+      "id": 10,
+      "name": "魔石",
+      "type": "Magic Stone",
+      "use": "可用於各類藥水合成。",
+      "location": "目前可用其他材料與教授1:1兌換",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/material/magicrock.webp",
+      "mapImage": "https://xiang1224.github.io/SnakeAcademy/images/map/magic-stone-map.webp",
+      "actualImage": "https://xiang1224.github.io/SnakeAcademy/images/map/magic-stone.webp",
+      "mapAvailable": false
+    }
+  ],
+  "craftingRecipes": [
+    {
+      "id": 1,
+      "name": "魔力恢復藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "魔法之花",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "能量護盾藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "魔法之花",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "強力心臟藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "魔法之花",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "回復藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "魔法之花",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "腎上腺素",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "龍血藤",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "特效瀉藥",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "妖精花粉",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "特級能量護盾藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "尖叫草藥",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        },
+        {
+          "name": "能量護盾藥水",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "特級強力心臟藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "尖叫草藥",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        },
+        {
+          "name": "強力心臟藥水",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "特級回復藥水",
+      "materials": [
+        {
+          "name": "怪物精華",
+          "qty": 2
+        },
+        {
+          "name": "尖叫草藥",
+          "qty": 2
+        },
+        {
+          "name": "魔石",
+          "qty": 2
+        },
+        {
+          "name": "回復藥水",
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "magicStones": [
+    {
+      "id": 1,
+      "name": "控血術",
+      "kind": "攻擊魔法",
+      "tags": [
+        "控血"
+      ],
+      "use": "操縱目標體內的血液流動，可用於造成內傷使其跪下。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/red.webp"
+    },
+    {
+      "id": 2,
+      "name": "噬魔術",
+      "kind": "攻擊魔法",
+      "tags": [
+        "噬魔"
+      ],
+      "use": "吞噬與消解敵方的魔力。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/red.webp"
+    },
+    {
+      "id": 3,
+      "name": "衝擊波",
+      "kind": "攻擊魔法",
+      "tags": [
+        "衝擊"
+      ],
+      "use": "釋放強烈的魔力震盪，能產生衝擊力擊退敵人。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/red.webp"
+    },
+    {
+      "id": 4,
+      "name": "遲緩術",
+      "kind": "輔助控制魔法",
+      "tags": [
+        "遲緩"
+      ],
+      "use": "降低目標的移動速度與反應力，有效減緩敵方的戰鬥節奏與行動能力。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/blue.webp"
+    },
+    {
+      "id": 5,
+      "name": "煙幕術",
+      "kind": "輔助控制魔法",
+      "tags": [
+        "煙幕"
+      ],
+      "use": "召喚遮蔽視線與魔力感知的濃煙，適合用於干擾敵方判斷、偵查與潛行掩護，亦可與指定目標交換位置。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/blue.webp"
+    },
+    {
+      "id": 6,
+      "name": "擊倒術",
+      "kind": "輔助控制魔法",
+      "tags": [
+        "擊倒"
+      ],
+      "use": "利用瞬間爆發的魔力衝擊破壞目標重心，使其摔倒在地並製造控場空檔。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/blue.webp"
+    },
+    {
+      "id": 7,
+      "name": "加速術",
+      "kind": "咒術魔法",
+      "tags": [
+        "加速"
+      ],
+      "use": "大幅提升目標的移動速度與行動頻率，在戰鬥中獲得先手與閃避優勢。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/purple.webp"
+    },
+    {
+      "id": 8,
+      "name": "開鎖術",
+      "kind": "咒術魔法",
+      "tags": [
+        "開鎖"
+      ],
+      "use": "以精準的魔力震盪解開各類機械鎖頭、魔導鎖或基礎封印結構。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/purple.webp"
+    },
+    {
+      "id": 9,
+      "name": "高躍術",
+      "kind": "咒術魔法",
+      "tags": [
+        "高躍"
+      ],
+      "use": "增強腿部爆發力或施加輕量重力效果，使施法者能夠跳躍至高處或跨越障礙。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/purple.webp"
+    },
+    {
+      "id": 10,
+      "name": "黑妝術",
+      "kind": "咒術魔法",
+      "tags": [
+        "黑妝"
+      ],
+      "use": "將暗影魔力附著於體表以遮蔽面貌，大幅提升在夜間與陰影中的隱匿能力。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/purple.webp"
+    },
+    {
+      "id": 11,
+      "name": "迷霧術",
+      "kind": "輔助控制魔法",
+      "tags": [
+        "迷霧"
+      ],
+      "use": "展開大範圍大霧遮蔽戰場視線，干擾視野以爭取逃脫時間或進行戰術轉移。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/blue.webp"
+    },
+    {
+      "id": 12,
+      "name": "火球術",
+      "kind": "攻擊魔法",
+      "tags": [
+        "火焰",
+        "爆破"
+      ],
+      "use": "凝聚熾熱的高溫火球投擲向敵人，擊中時會引發範圍爆裂與持續灼燒傷害。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/red.webp"
+    },
+    {
+      "id": 13,
+      "name": "牽引術",
+      "kind": "咒術魔法",
+      "tags": [
+        "牽引"
+      ],
+      "use": "釋放無形魔力，將距離自己最近的敵人強力彈開，迅速拉開安全距離。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/purple.webp"
+    },
+    {
+      "id": 14,
+      "name": "繳械術",
+      "kind": "咒術魔法",
+      "tags": [
+        "繳械"
+      ],
+      "use": "發射精準的魔力衝擊，強行打落敵方手中持有的武器或魔導器具，削弱其攻擊能力。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/purple.webp"
+    },
+    {
+      "id": 15,
+      "name": "爆炸術",
+      "kind": "輔助控制魔法",
+      "tags": [
+        "爆炸"
+      ],
+      "use": "發動後靠近目標將引發魔力共振強制定身對方，但強烈的反作用力也會使施法者自身同時陷入定身。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/rock/blue.webp"
+    }
+  ],
+  "forbiddenTablets": [
+    {
+      "id": 1,
+      "discovered": true,
+      "subtitle": "失落的歷史",
+      "lines": [
+        "王選擇把自己的靈魂撕裂。",
+        "化作七道墜落世界的流星。"
+      ]
+    },
+    {
+      "id": 2,
+      "discovered": true,
+      "subtitle": "失落的歷史",
+      "lines": [
+        "森林被挖空。",
+        "河流失去光芒。",
+        "魔族死於沒有魔素的夜晚。"
+      ]
+    },
+    {
+      "id": 3,
+      "discovered": true,
+      "subtitle": "失落的歷史",
+      "lines": [
+        "人類駕船穿越黑海。",
+        "他們不是為了和平而來。",
+        "而是為了掠奪力量。"
+      ]
+    },
+    {
+      "id": 4,
+      "discovered": true,
+      "subtitle": "失落的歷史",
+      "lines": [
+        "願千年後族人幫助復甦。",
+        "人族因掠奪魔素打造魔法王國。"
+      ]
+    },
+    {
+      "id": 5,
+      "discovered": true,
+      "subtitle": "失落的歷史",
+      "lines": [
+        "第五位英雄試圖阻止人類，最終反被四位英雄殺害。",
+        "因此，他的名字被從歷史中抹去。"
+      ]
+    },
+    {
+      "id": 6,
+      "discovered": true,
+      "subtitle": "失落的歷史",
+      "lines": [
+        "魔族沒有選擇反抗到底。",
+        "王選擇犧牲自己。"
+      ]
+    },
+    {
+      "id": 7,
+      "discovered": false
+    }
+  ],
+  "people": [
+    {
+      "id": 1,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "彼得 • 楊",
+      "title": "校長",
+      "expertise": "學院行政與治理",
+      "bio": "總管學院行政與各項重大決策，統籌全院運作。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/彼得 • 楊.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/彼得 • 楊.webp"
+    },
+    {
+      "id": 2,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "芭別 • 喬",
+      "title": "訓導老師",
+      "expertise": "學生生活輔導",
+      "bio": "負責學生生活常規與紀律管理。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-10.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-10.webp"
+    },
+    {
+      "id": 3,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "克羅斯 • 蘭斯洛特",
+      "title": "訓導老師",
+      "expertise": "學生生活輔導",
+      "bio": "負責學生生活常規與紀律管理。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-11.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-11.webp"
+    },
+    {
+      "id": 4,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "魯迪烏斯．格雷拉特",
+      "title": "訓導老師",
+      "expertise": "學生生活輔導",
+      "bio": "負責學生生活常規與紀律管理。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/魯迪烏斯．格雷拉特.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/魯迪烏斯．格雷拉特.webp"
+    },
+    {
+      "id": 5,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "卡能傑 • 丁格",
+      "title": "訓導老師",
+      "expertise": "學生生活輔導",
+      "bio": "負責學生生活常規與紀律管理。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-13.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-13.webp"
+    },
+    {
+      "id": 6,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "奈爾 • 奧斯本",
+      "title": "訓導老師",
+      "expertise": "學生生活輔導",
+      "bio": "負責學生生活常規與紀律管理。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-14.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-14.webp"
+    },
+    {
+      "id": 7,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "帕比 • 索恩維亞",
+      "title": "訓導老師",
+      "expertise": "學生生活輔導",
+      "bio": "負責學生生活常規與紀律管理。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/帕比．索恩維亞.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/帕比．索恩維亞.webp"
+    },
+    {
+      "id": 8,
+      "type": "faculty",
+      "intelOnly": true,
+      "name": "洛克 • K",
+      "title": "課程教授",
+      "expertise": "雙手劍",
+      "bio": "教授雙手劍術，注重實戰技巧與體能訓練。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/洛克•K.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/洛克•K.webp"
+    },
+    {
+      "id": 9,
+      "type": "faculty",
+      "intelOnly": true,
+      "house": "凍狼學院",
+      "name": "洛恩 • 維特斯",
+      "title": "課程教授",
+      "expertise": "魔藥學",
+      "bio": "任教於凍狼學院，專精魔藥調配與藥理研究。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/洛恩 • 維特斯.webp",
+      "liveUrl": "https://www.twitch.tv/abcabc0620",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/洛恩 • 維特斯.webp"
+    },
+    {
+      "id": 10,
+      "type": "faculty",
+      "intelOnly": true,
+      "house": "凍狼學院",
+      "name": "約翰 • 康斯坦丁",
+      "title": "課程教授",
+      "expertise": "攻擊魔法",
+      "bio": "任教於凍狼學院，專精攻擊性魔法的施展與教學。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/約翰•康斯坦丁.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/約翰•康斯坦丁.webp"
+    },
+    {
+      "id": 11,
+      "type": "faculty",
+      "intelOnly": true,
+      "house": "老虎學院",
+      "name": "艾莉森 • 奧爾洛夫",
+      "title": "課程教授",
+      "expertise": "魔藥學",
+      "bio": "任教於老虎學院，擅長進階魔藥配方設計。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/艾莉森 • 奧爾洛夫.webp",
+      "liveUrl": "https://www.twitch.tv/ume_zz",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/艾莉森 • 奧爾洛夫.webp"
+    },
+    {
+      "id": 12,
+      "type": "faculty",
+      "house": "老虎學院",
+      "name": "哈爾 • 詹金斯",
+      "title": "教授",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/students/1.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/1.webp"
+    },
+    {
+      "id": 13,
+      "type": "faculty",
+      "intelOnly": true,
+      "house": "鳳凰學院",
+      "name": "貝爾 • 奧利安",
+      "title": "課程教授",
+      "expertise": "攻擊魔法",
+      "bio": "任教於鳳凰學院，致力於培養學生的實戰魔法能力。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/貝爾•奧利安.webp",
+      "note": "涉嫌使用黑魔法書，現已收押阿茲卡班，教授職位已解除。",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/貝爾•奧利安.webp"
+    },
+    {
+      "id": 14,
+      "type": "faculty",
+      "intelOnly": true,
+      "house": "鳳凰學院",
+      "name": "傑克 • 唐 • 祖利亞",
+      "title": "課程教授",
+      "expertise": "咒術學",
+      "bio": "任教於鳳凰學院，專精咒術學的理論與應用。",
+      "image": "https://xiang1224.github.io/SnakeAcademy/images/teachers/傑克 • 唐 • 祖利亞.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/傑克 • 唐 • 祖利亞.webp"
+    },
+    {
+      "id": 15,
+      "type": "faculty",
+      "house": "snake",
+      "name": "歐克 • 科布拉",
+      "title": "教授",
+      "bio": "負責學院教學與學生指導。",
+      "expertise": "魔法理論、實戰指導",
+      "image": "/manus-storage/20499b50e7d4_578619c1.webp",
+      "liveUrl": "https://www.twitch.tv/kosh1106",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-01.webp"
+    },
+    {
+      "id": 16,
+      "type": "faculty",
+      "house": "snake",
+      "name": "比莉 • 艾利殊",
+      "title": "教授",
+      "bio": "負責課程規劃與學院事務。",
+      "expertise": "歷史、戰術與課程規劃",
+      "image": "/manus-storage/24e6bc70ed0d_224f623e.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/teachers/teacher-02.webp"
+    },
+    {
+      "id": 1,
+      "type": "leader",
+      "name": "優莉安娜．溫特貝爾",
+      "title": "班長",
+      "bio": "協助教授管理班級與維持團隊秩序。",
+      "image": "/manus-storage/2b88def15964_bd14eb89.webp",
+      "liveUrl": "https://www.twitch.tv/loveuu_uu",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/優莉安娜．溫特貝爾.webp"
+    },
+    {
+      "id": 2,
+      "type": "leader",
+      "name": "茶漓．阿斯特",
+      "title": "副班長",
+      "bio": "協助班長處理班務與學生事務。",
+      "image": "/manus-storage/8388506e8ea1_9759fb36.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/茶漓．阿斯特.webp"
+    },
+    {
+      "id": 3,
+      "type": "student",
+      "name": "心肝 • 普林西斯",
+      "title": "學生",
+      "image": "/manus-storage/52d5ec9dac81_ac026234.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/心肝 • 普林西斯.webp"
+    },
+    {
+      "id": 4,
+      "type": "student",
+      "name": "伊凡•莫爾",
+      "title": "學生",
+      "image": "/manus-storage/33a24323ad38_dfdae3b7.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/伊凡•莫爾.webp"
+    },
+    {
+      "id": 5,
+      "type": "student",
+      "name": "吉米 • 湯馬斯",
+      "title": "學生",
+      "image": "/manus-storage/d58eb50b9cea_4e4426c5.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/吉米 • 湯馬斯.webp"
+    },
+    {
+      "id": 6,
+      "type": "student",
+      "name": "杜威・庫柏恩",
+      "title": "學生",
+      "image": "/manus-storage/e6df1be25606_3f64fa18.webp",
+      "liveUrl": "https://www.twitch.tv/djiang_duuuku",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/杜威・庫柏恩.webp"
+    },
+    {
+      "id": 7,
+      "type": "student",
+      "name": "芙莉．佛力",
+      "title": "學生",
+      "image": "/manus-storage/bc867cb0bf7d_76789943.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/芙莉．佛力.webp"
+    },
+    {
+      "id": 8,
+      "type": "student",
+      "name": "夏綠蒂．華倫",
+      "title": "學生",
+      "image": "/manus-storage/fee6c2e8b4f8_d3c7f605.webp",
+      "liveUrl": "https://www.twitch.tv/amuam3u",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/夏綠蒂．華倫.webp"
+    },
+    {
+      "id": 9,
+      "type": "student",
+      "name": "烏拉菈•艾寶",
+      "title": "學生",
+      "image": "/manus-storage/8ca06689432e_9fe98f19.webp",
+      "liveUrl": "https://www.twitch.tv/rr_leice",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/烏拉菈•艾寶.webp"
+    },
+    {
+      "id": 10,
+      "type": "student",
+      "name": "烏魯魯奇雅．瑪拉",
+      "title": "學生",
+      "image": "/manus-storage/0a9558d5dfbf_43e6c500.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/烏魯魯奇雅．瑪拉.webp"
+    },
+    {
+      "id": 11,
+      "type": "student",
+      "name": "莉絲·菲伊",
+      "title": "學生",
+      "image": "/manus-storage/c11099203172_b73b433c.webp",
+      "liveUrl": "https://www.twitch.tv/1nom1",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/莉絲·菲伊.webp"
+    },
+    {
+      "id": 12,
+      "type": "student",
+      "name": "凱文．諾瓦克",
+      "title": "學生",
+      "image": "/manus-storage/11dae74ee0b7_f30a5f2b.webp",
+      "liveUrl": "https://www.twitch.tv/capricornxiang",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/凱文．諾瓦克.webp"
+    },
+    {
+      "id": 13,
+      "type": "student",
+      "name": "愛・洛溫斯特",
+      "title": "學生",
+      "image": "/manus-storage/290b7ba86bee_09b1cf0e.webp",
+      "liveUrl": "https://www.twitch.tv/arielacc3",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/愛・洛溫斯特.webp"
+    },
+    {
+      "id": 14,
+      "type": "student",
+      "name": "溫加·癲拉唯啊撒",
+      "title": "學生",
+      "image": "/manus-storage/12f720651a8a_74b5c089.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/溫加·癲拉唯啊撒.webp"
+    },
+    {
+      "id": 15,
+      "type": "student",
+      "name": "雷歐．提力斯",
+      "title": "學生",
+      "image": "/manus-storage/1c5d7006df42_03480f99.webp",
+      "liveUrl": "https://www.twitch.tv/pug_tw",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/雷歐．提力斯.webp"
+    },
+    {
+      "id": 16,
+      "type": "student",
+      "name": "福瑞．布萊梅",
+      "title": "學生",
+      "image": "/manus-storage/dd98b8b84306_25a2488f.webp",
+      "liveUrl": "https://www.twitch.tv/ishikumason",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/福瑞．布萊梅.webp"
+    },
+    {
+      "id": 17,
+      "type": "student",
+      "name": "維恩．阿斯特",
+      "title": "學生",
+      "image": "/manus-storage/767b58327f52_bf5072b1.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/維恩．阿斯特.webp"
+    },
+    {
+      "id": 18,
+      "type": "student",
+      "name": "蕾貝卡．羅溫",
+      "title": "學生",
+      "image": "/manus-storage/b140aa29d703_814fdea1.webp",
+      "liveUrl": "https://www.twitch.tv/wxyz_000",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/蕾貝卡．羅溫.webp"
+    },
+    {
+      "id": 19,
+      "type": "gifted",
+      "name": "蹦．撤卡拉卡",
+      "title": "資優生",
+      "bio": "負責教學弟們搭訕。",
+      "image": "/manus-storage/9dce60805438_f115432d.webp",
+      "liveUrl": "https://www.twitch.tv/kaleo_c",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/蹦．撤卡拉卡.webp"
+    },
+    {
+      "id": 20,
+      "type": "student",
+      "name": "鵝嵋珊 • 荷歡珊",
+      "title": "學生",
+      "image": "/manus-storage/6cbaf1c4c407_f5e1ce4e.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/鵝嵋珊 • 荷歡珊.webp"
+    },
+    {
+      "id": 21,
+      "type": "gifted",
+      "name": "伊芙琳．克羅伊斯",
+      "title": "資優生",
+      "bio": "負責細心呵護學弟妹們。",
+      "image": "/manus-storage/5cf97eb0511d_366eca45.webp",
+      "liveUrl": "https://www.twitch.tv/hachi0u0",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/伊芙琳．克羅伊斯.webp"
+    },
+    {
+      "id": 22,
+      "type": "student",
+      "name": "莉絲·羅文",
+      "title": "學生",
+      "image": "/manus-storage/a91312777ba1_6e3cfdaa.webp",
+      "liveUrl": "https://www.twitch.tv/yidhra0727",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/莉絲·羅文.webp"
+    },
+    {
+      "id": 23,
+      "type": "student",
+      "name": "亞瑟 • 金斯利",
+      "title": "學生",
+      "image": "/manus-storage/fb49d0e859b1_3a99f7d2.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/亞瑟 • 金斯利.webp"
+    },
+    {
+      "id": 24,
+      "type": "student",
+      "name": "哈比·麥·貴度",
+      "title": "學生",
+      "image": "/manus-storage/266bce4ac11a_69850dc1.webp",
+      "liveUrl": "https://www.twitch.tv/tnyuuta",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/哈比·麥·貴度.webp"
+    },
+    {
+      "id": 25,
+      "type": "student",
+      "name": "熙振．泰瑞托",
+      "title": "學生",
+      "image": "/manus-storage/6d908971e43c_e535d771.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/熙振．泰瑞托.webp"
+    },
+    {
+      "id": 26,
+      "type": "student",
+      "name": "伊莉莎．霍普",
+      "title": "學生",
+      "image": "/manus-storage/bc61e906baf2_9528331b.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/伊莉莎．霍普.webp"
+    },
+    {
+      "id": 27,
+      "type": "student",
+      "name": "露娜．索爾貝克",
+      "title": "學生",
+      "image": "/manus-storage/78600b818286_436016bf.webp",
+      "liveUrl": "https://www.twitch.tv/boss_guan",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/露娜．索爾貝克.webp"
+    },
+    {
+      "id": 28,
+      "type": "student",
+      "name": "凱斯·凱爾采",
+      "title": "學生",
+      "image": "/manus-storage/6a077f09d4be_1a7cb041.webp",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/凱斯·凱爾采.webp"
+    },
+    {
+      "id": 29,
+      "type": "student",
+      "name": "史崔克·東",
+      "title": "學生",
+      "image": "/manus-storage/f340f8ee3613_c90c1673.webp",
+      "liveUrl": "https://www.twitch.tv/hirnmampfer",
+      "sourceImage": "https://xiang1224.github.io/SnakeAcademy/images/students/史崔克·東.webp"
+    }
+  ]
+}

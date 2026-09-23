@@ -1,0 +1,66 @@
+import { chromium } from '@playwright/test';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const out='/home/ubuntu/snake-qa';mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+const context=await browser.newContext({viewport:{width:1440,height:950},acceptDownloads:true});
+const page=await context.newPage(),errors=[],results=[];
+page.on('pageerror',error=>errors.push(error.message));
+const check=(name)=>{results.push(name);console.log('PASS',name);};
+const base='http://localhost:3000';
+try{
+  await page.goto(base,{waitUntil:'networkidle'});
+  await page.screenshot({path:out+'/desktop-home.png'});
+  await page.locator('.main-nav button').filter({hasText:'師生名錄'}).click();
+  await page.locator('.person-image img').first().waitFor();
+  await page.waitForFunction(()=>Array.from(document.querySelectorAll('.person-image img')).every(i=>i.complete&&i.naturalWidth>0));
+  assert.equal(await page.locator('.person-card').count(),6);check('Reference roster photos all load');
+  await page.getByPlaceholder('搜尋姓名、稱號或系所').fill('茶漓');assert.equal(await page.locator('.person-card').count(),1);await page.getByPlaceholder('搜尋姓名、稱號或系所').fill('');check('Roster search');
+  await page.locator('.intel-nav>button').click();await page.locator('.intel-dropdown button').filter({hasText:'採集相關'}).click();
+  await page.getByLabel('通行密語').fill('wrong');await page.getByRole('button',{name:'解鎖情報檔案'}).click();await page.getByText('密語不正確，請再試一次。',{exact:true}).waitFor();
+  await page.getByLabel('通行密語').fill('bigsnake');await page.getByRole('button',{name:'解鎖情報檔案'}).click();await page.getByRole('heading',{name:'水晶蘑菇',exact:true}).waitFor();
+  for(const name of ['魔法石相關','禁忌的石碑','教授們相關'])await page.getByRole('tab',{name:new RegExp(name)}).click();
+  await page.locator('#intel').screenshot({path:out+'/intelligence.png'});check('Wrong/correct passphrase and all four intelligence tabs');
+  await page.locator('.main-nav button').filter({hasText:'毒蛇卡包'}).click();
+  const before=await page.evaluate(()=>localStorage.getItem('snake-academy-ledger-v2'));
+  await page.locator('.pack-wrapper').hover();assert.equal(await page.evaluate(()=>localStorage.getItem('snake-academy-ledger-v2')),before);check('Hover never consumes a draw');
+  await page.locator('.daily-draw-button').click();await page.waitForFunction(()=>document.querySelectorAll('.drawn-card-slot').length===1);
+  await page.waitForFunction(()=>document.querySelector('.ten-draw-button')?.disabled===false);
+  assert.equal(await page.locator('.daily-draw-button').isDisabled(),true);check('Daily draw gives exactly one card and disables claim');
+  await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('.daily-draw-button').isDisabled(),true);check('Daily quota survives reload');
+  await page.locator('.main-nav button').filter({hasText:'毒蛇卡包'}).click();
+  await page.locator('.ten-draw-button').click();await page.waitForFunction(()=>document.querySelectorAll('.drawn-card-slot').length===10);
+  await page.getByRole('button',{name:'全部揭曉 / 跳過動畫'}).click();
+  const rarities=await page.locator('.drawn-grid .card-rarity-stamp').allTextContents();assert(rarities.some(r=>r==='SR'||r==='SSR'));
+  assert.equal(await page.locator('.drawn-card-slot.is-revealed').count(),10);check('Ten-draw has 10 cards, SR+ and skip-completes animation');
+  await page.locator('.reveal-tray').screenshot({path:out+'/ten-results.png'});
+  const originalLedger=await page.evaluate(()=>JSON.parse(localStorage.getItem('snake-academy-ledger-v2')));
+  const other=await context.newPage();await other.goto(base);assert.equal(await other.locator('.daily-draw-button').isDisabled(),true);await other.close();check('Daily quota shared across browser tabs');
+  // Force a legitimate draw selection by making only one SSR uncollected in this isolated QA browser.
+  const ids=await page.evaluate(async()=>{
+    const data=await import('/src/lib/academy-data.ts');
+    const old=['card-seraphine','card-lyra','card-cassian','card-morrow','card-elias','card-vesper','card-ophion','card-archive','card-discipline','card-nocturne','card-astral','card-greenhouse'];
+    return [...data.academyCards,...data.specialCards].map(c=>c.id).concat(old);
+  });
+  await page.evaluate(ids=>{const target='source-faculty-15-ssr';localStorage.setItem('snake-academy-ledger-v2',JSON.stringify({version:2,collection:ids.filter(id=>id!==target),dailyDate:null,history:[]}));},ids);
+  await page.reload({waitUntil:'networkidle'});await page.locator('.main-nav button').filter({hasText:'毒蛇卡包'}).click();
+  await page.locator('.daily-draw-button').click();await page.locator('.ssr-impact-overlay').waitFor();await page.screenshot({path:out+'/ssr-impact.png'});check('SSR draw produces dedicated full-screen card spotlight');
+  await page.locator('.ssr-impact-copy button').click();await page.locator('.drawn-grid .trading-card').click();await page.getByRole('button',{name:'匯出 PNG',exact:true}).waitFor();
+  await page.waitForFunction(()=>document.querySelector('.detail-actions .button-primary')?.disabled===false);
+  const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'匯出 PNG',exact:true}).click();const download=await downloadPromise;await download.saveAs(out+'/exported-card.png');
+  const png=readFileSync(out+'/exported-card.png');assert.equal(png.readUInt32BE(16),900);assert.equal(png.readUInt32BE(20),1350);assert(png.length>20000);check('PNG export downloads a real 900×1350 card image');
+  await page.screenshot({path:out+'/card-detail.png'});
+  await page.evaluate(()=>{Object.defineProperty(navigator,'share',{value:undefined,configurable:true});});
+  const fallback=page.waitForEvent('download');await page.getByRole('button',{name:'分享卡面',exact:true}).click();await (await fallback).saveAs(out+'/share-fallback.png');check('Unsupported native share falls back to PNG download');
+  // Native share invoked immediately from the click with a prepared File (mock avoids posting).
+  await page.evaluate(()=>{Object.defineProperty(navigator,'canShare',{value:()=>true,configurable:true});Object.defineProperty(navigator,'share',{value:async data=>{window.__share={type:data.files[0].type,size:data.files[0].size,active:navigator.userActivation.isActive};},configurable:true});});
+  await page.getByRole('button',{name:'分享卡面',exact:true}).click();const shared=await page.evaluate(()=>window.__share);assert(shared.active);assert.equal(shared.type,'image/png');check('Native share receives prepared file during user gesture (mocked)');
+  await page.keyboard.press('Escape');await page.locator('.sound-toggle').click();assert.equal(await page.locator('.sound-toggle').getAttribute('aria-pressed'),'false');check('Sound can be muted');
+  await page.evaluate(ledger=>localStorage.setItem('snake-academy-ledger-v2',JSON.stringify(ledger)),originalLedger);
+  const mobile=await context.newPage();await mobile.setViewportSize({width:390,height:844});await mobile.emulateMedia({reducedMotion:'reduce'});await mobile.goto(base,{waitUntil:'networkidle'});
+  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await mobile.screenshot({path:out+'/mobile-home.png'});
+  await mobile.locator('.mobile-menu').click();await mobile.locator('.main-nav button').filter({hasText:'毒蛇卡包'}).click();await mobile.locator('#pack').screenshot({path:out+'/mobile-pack.png'});
+  assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));check('390px mobile layout and reduced-motion mode have no horizontal overflow');
+  assert.equal(errors.length,0);check('No uncaught page errors');
+  writeFileSync(out+'/results.json',JSON.stringify({passed:results,errors},null,2));console.log('QA COMPLETE',results.length);
+}catch(error){await page.screenshot({path:out+'/failure.png'});writeFileSync(out+'/failure.txt',String(error)+'\n'+JSON.stringify(errors));throw error;}finally{await browser.close();}
