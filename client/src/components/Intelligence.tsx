@@ -399,7 +399,7 @@ export default function Intelligence({
           }}
         >
           <div className="intel-gate-top">
-            <span className="intel-gate-symbol">ϟ</span>
+            <img className="intel-gate-symbol" src={`${import.meta.env.BASE_URL}crest.png`} alt="" />
             <button
               type="button"
               className="icon-button"

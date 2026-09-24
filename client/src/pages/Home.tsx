@@ -42,13 +42,15 @@ import CollectionArchive, {
   MilestoneCelebration,
 } from "@/components/CollectionArchive";
 import { useCollectionMilestones } from "@/hooks/useCollectionMilestones";
-import NewsTicker from "@/components/NewsTicker";
+import { MILESTONES } from "@/lib/collection-progress";
 import BackgroundMusic from "@/components/BackgroundMusic";
 import DrawHistory from "@/components/DrawHistory";
 import RosterExport from "@/components/RosterExport";
 import { academyNews } from "@/lib/academy-news";
 
 const HERO_IMAGE = `${import.meta.env.BASE_URL}manus-storage/snake-academy-hero_24c5d010.png`;
+const CREST = `${import.meta.env.BASE_URL}crest.png`;
+const NEWS_SEEN = "snake-academy-news-seen";
 
 const cards: any[] = [
   ...academyCards,
@@ -224,6 +226,30 @@ export default function Home() {
     drawBusy || !!ssrBurst || !!selectedCard
   );
   const dailyAvailable = ledger.dailyDate !== today;
+  const [seenNews, setSeenNews] = useState<string[]>(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(NEWS_SEEN) || "[]");
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  });
+  const markNews = (id: string, target: string) => {
+    const next = seenNews.includes(id) ? seenNews : [...seenNews, id];
+    setSeenNews(next);
+    try {
+      localStorage.setItem(NEWS_SEEN, JSON.stringify(next));
+    } catch {}
+    scrollToId(target);
+  };
+  const ownedCount = collection.length;
+  const cardTotal = cards.length;
+  const ownedPercent = cardTotal
+    ? Math.round((ownedCount / cardTotal) * 100)
+    : 0;
+  const nextMilestone = MILESTONES.find(
+    item => ownedCount * 100 < cardTotal * item.percent
+  );
   const later = (callback: () => void, delay: number) => {
     const id = setTimeout(callback, delay);
     timers.current.push(id);
@@ -602,10 +628,7 @@ export default function Home() {
           />
         </button>
         <nav className={`main-nav ${mobileNav ? "is-open" : ""}`}>
-          {[
-            { id: "intro", label: "學院簡介" },
-            { id: "roster", label: "師生名錄" },
-          ].map(item => (
+          {[{ id: "roster", label: "師生名錄" }].map(item => (
             <button
               key={item.id}
               className={activeNav === item.id ? "active" : ""}
@@ -647,10 +670,7 @@ export default function Home() {
               </div>
             )}
           </div>
-          {[
-            { id: "pack", label: "毒蛇卡包" },
-            { id: "news", label: "動態消息" },
-          ].map(item => (
+          {[{ id: "pack", label: "毒蛇卡包" }].map(item => (
             <button
               key={item.id}
               className={`${activeNav === item.id ? "active" : ""} ${item.id === "pack" ? "nav-accent" : ""}`}
@@ -699,57 +719,109 @@ export default function Home() {
           className="hero-section"
           style={{ backgroundImage: `url(${HERO_IMAGE})` }}
         >
-          <NewsTicker onNavigate={scrollToId}/>
           <div className="hero-overlay" />
-          <div className="hero-content">
-            <p className="eyebrow">
-              <span className="eyebrow-line" />
-              CLASSIFIED ACADEMIC ARCHIVE <span className="eyebrow-line" />
-            </p>
-            <h1>
-              在黑暗中
-              <br />
-              <em>保持清醒。</em>
-            </h1>
-            <p className="hero-description">
-              智慧．野心．榮耀
-              <br />
-              <span>一所訓練你掌握命運的蛇院學院。</span>
-            </p>
-            <div className="hero-ctas">
+          <div className="hero-layout">
+            <div className="hero-content">
+              <p className="eyebrow">學院控制台</p>
+              <h1>
+                在黑暗中
+                <br />
+                <em>保持清醒。</em>
+              </h1>
+              <p className="hero-description">
+                今日先完成一件事。
+                <span>
+                  {dailyAvailable
+                    ? "免費抽卡尚未領取。"
+                    : "今日免費抽卡已完成。"}
+                  {` 收藏 ${ownedCount}/${cardTotal}。`}
+                </span>
+              </p>
               <button
                 className="button-primary"
-                onClick={() => scrollToId("pack")}
+                onClick={() => {
+                  scrollToId("pack");
+                  if (dailyAvailable) void openPack("daily");
+                }}
               >
-                <span>進入卡包檔案</span>
+                <span>
+                  {dailyAvailable ? "領取今日免費抽卡" : "進入毒蛇卡包"}
+                </span>
                 <ArrowRight size={16} />
               </button>
-              <button
-                className="button-ghost"
-                onClick={() => scrollToId("roster")}
-              >
-                <span>查看師生名錄</span>
-                <ArrowDown size={16} />
-              </button>
+              <div className="quick-grid">
+                <button type="button" onClick={() => scrollToId("roster")}>
+                  <b>師生名錄</b>
+                  <span>查看 {roster.length} 位師生檔案</span>
+                </button>
+                <button type="button" onClick={() => scrollToId("intel")}>
+                  <b>情報區</b>
+                  <span>密語解鎖採集與石碑</span>
+                </button>
+                <button type="button" onClick={() => setCollectionOpen(true)}>
+                  <b>收藏圖鑑</b>
+                  <span>
+                    {ownedPercent}%
+                    {nextMilestone
+                      ? ` · 下一稱號 ${nextMilestone.title}`
+                      : " · 稱號已集齊"}
+                  </span>
+                </button>
+              </div>
             </div>
+            <aside className="console-panel" aria-label="學院狀態">
+              <p>今日狀態</p>
+              <div className="console-row">
+                <span>今日任務</span>
+                <b>{dailyAvailable ? "領取免費一抽" : "已完成"}</b>
+              </div>
+              <div className="console-row">
+                <span>免費抽卡</span>
+                <b>{dailyAvailable ? "可領取" : "今日已用"}</b>
+              </div>
+              <div className="console-row">
+                <span>收藏進度</span>
+                <b>
+                  {ownedCount}/{cardTotal} · {ownedPercent}%
+                </b>
+              </div>
+              <div
+                className="console-meter"
+                role="progressbar"
+                aria-valuenow={ownedPercent}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              >
+                <span style={{ width: `${ownedPercent}%` }} />
+              </div>
+              <div className="console-row">
+                <span>下一里程</span>
+                <b>
+                  {nextMilestone
+                    ? `${nextMilestone.percent}% ${nextMilestone.title}`
+                    : "全部稱號已解鎖"}
+                </b>
+              </div>
+              <div className="console-row">
+                <span>最新消息</span>
+                <b>{academyNews.find(item => !seenNews.includes(item.id))?.title || academyNews[0].title}</b>
+              </div>
+            </aside>
           </div>
-          <div className="hero-aside">
-            <div className="aside-line" />
-            <span>SCROLL TO DESCEND</span>
-            <ArrowDown size={15} />
-          </div>
-          <div className="hero-stamp">
-            <span>SA</span>
-            <small>
-              KEEP
-              <br />
-              YOUR
-              <br />
-              POISON
-            </small>
-          </div>
-          <div className="hero-index">
-            01 <span>/ 04</span>
+          <div className="hero-news" aria-label="學院情報卡片">
+            {academyNews.slice(0, 3).map(item => (
+              <button
+                key={item.id}
+                type="button"
+                className={seenNews.includes(item.id) ? "" : "is-unread"}
+                onClick={() => markNews(item.id, item.target)}
+              >
+                {!seenNews.includes(item.id) && <i>未讀</i>}
+                <time>{item.date}</time>
+                <b>{item.title}</b>
+                <span>{item.summary}</span>
+              </button>
+            ))}
           </div>
         </section>
 
@@ -983,7 +1055,9 @@ export default function Home() {
                     <b>SA</b>
                     <span>VOL. 01 / 2026</span>
                   </div>
-                  <div className="pack-snake">ϟ</div>
+                  <div className="pack-snake">
+                    <img src={CREST} alt="" />
+                  </div>
                   <div className="pack-title">
                     SNAKE
                     <br />
@@ -1147,6 +1221,7 @@ export default function Home() {
           <div className="news-grid">
             <article className="news-feature">
               <div className="news-image">
+                <img className="news-crest" src={CREST} alt="" />
                 <span>
                   ARCHIVE
                   <br />
@@ -1171,7 +1246,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="footer-brand">
-          <span className="brand-mark">ϟ</span>
+          <img className="crest-mark" src={CREST} alt="" />
           <div>
             <b>SNAKE ACADEMY</b>
             <small>智慧．野心．榮耀</small>
@@ -1186,6 +1261,20 @@ export default function Home() {
           <ArrowDown size={16} />
         </button>
       </footer>
+      <nav className="mobile-dock" aria-label="手機導覽">
+        <button type="button" onClick={() => scrollToId("intro")}>
+          首頁
+        </button>
+        <button type="button" onClick={() => scrollToId("pack")}>
+          卡包
+        </button>
+        <button type="button" onClick={() => scrollToId("roster")}>
+          名錄
+        </button>
+        <button type="button" onClick={() => scrollToId("intel")}>
+          情報
+        </button>
+      </nav>
 
       {ssrBurst && (
         <div
