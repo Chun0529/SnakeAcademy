@@ -62,11 +62,21 @@ export async function makeCardFile(card: any): Promise<File> {
       ctx.arc(450, 620, r, 0, Math.PI * 2);
       ctx.stroke();
     });
-    ctx.font = "150px serif";
-    ctx.textAlign = "center";
-    ctx.fillStyle = color;
-    ctx.fillText("ϟ", 450, 670);
-    ctx.textAlign = "left";
+    try {
+      const crest = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error("crest"));
+        img.src = `${import.meta.env.BASE_URL}crest.png`;
+      });
+      ctx.drawImage(crest, 330, 500, 240, 280);
+    } catch {
+      ctx.font = "150px serif";
+      ctx.textAlign = "center";
+      ctx.fillStyle = color;
+      ctx.fillText("SA", 450, 670);
+      ctx.textAlign = "left";
+    }
     ctx.globalAlpha = 1;
   }
   const shade = ctx.createLinearGradient(0, 560, 0, 1290);
