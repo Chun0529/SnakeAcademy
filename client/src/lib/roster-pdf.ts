@@ -16,7 +16,7 @@ export async function createRosterPdf(people:RosterEntry[],scope:'filtered'|'all
  header();
  autoTable(pdf,{startY:55,margin:{top:55,right:18,bottom:24,left:18},head:[['序號','姓名 / 身份','稱號 / 專長分組','簡介']],body:people.map((p,i)=>[String(i+1),`${p.name}\n${p.type}`,`${p.role}\n${p.department}`,p.bio]),styles:{font:'AcademyCJK',fontStyle:'normal',fontSize:8.5,cellPadding:3.2,overflow:'linebreak',textColor:[32,45,36],lineWidth:0.15,lineColor:[218,224,214],valign:'top'},headStyles:{font:'AcademyCJK',fontStyle:'normal',fillColor:[28,57,37],textColor:[243,243,225],fontSize:8.5},alternateRowStyles:{fillColor:[245,248,240]},columnStyles:{0:{cellWidth:12},1:{cellWidth:41},2:{cellWidth:50},3:{cellWidth:'auto'}},rowPageBreak:'avoid',showHead:'everyPage',willDrawPage:()=>{header();}});
  const total=pdf.getNumberOfPages();
- for(let page=1;page<=total;page++){pdf.setPage(page);pdf.setDrawColor(177,184,165);pdf.line(18,276,192,276);pdf.setTextColor(87,99,79);pdf.setFontSize(7);pdf.text('資料來源：毒蛇學院原站 · 名錄快照',18,282);pdf.setFontSize(6.8);pdf.text('xiang1224.github.io/SnakeAcademy/',18,287);pdf.setFontSize(8);pdf.text(`${page} / ${total}`,192,284,{align:'right'});}
+ for(let page=1;page<=total;page++){pdf.setPage(page);pdf.setDrawColor(177,184,165);pdf.line(18,276,192,276);pdf.setTextColor(87,99,79);pdf.setFontSize(8);pdf.text(`${page} / ${total}`,192,284,{align:'right'});}
  return {blob:pdf.output('blob'),filename:`毒蛇學院_師生名錄_${date}_${people.length}位.pdf`};
 }
 export function savePdf(blob:Blob,filename:string){const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}

@@ -25,7 +25,6 @@ import {
   specialCards,
   typeFilters,
   deptFilters,
-  REFERENCE_URL,
 } from "@/lib/academy-data";
 import Intelligence, { intelTabs } from "@/components/Intelligence";
 import {
@@ -791,8 +790,6 @@ export default function Home() {
             <div className="heading-aside">
               <span className="live-dot" />
               SOURCE ARCHIVE
-              <br />
-              <small>原站 31 位師生 · 2026 快照</small>
             </div>
           </div>
           <div className="roster-toolbar">
@@ -919,13 +916,6 @@ export default function Home() {
               <ChevronDown size={14} />
             </button>
           )}
-          <p className="source-credit">
-            人物名稱與照片來自{" "}
-            <a href={REFERENCE_URL} target="_blank" rel="noreferrer">
-              毒蛇學院師生名錄
-            </a>
-            。稀有度與典藏版本為本站卡牌設計。
-          </p>
         </section>
 
         <Intelligence request={intelRequest} />

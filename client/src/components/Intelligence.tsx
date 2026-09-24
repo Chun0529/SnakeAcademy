@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Lock, Search, X, ExternalLink } from "lucide-react";
 import reference from "@/lib/reference-data.json";
-import { REFERENCE_URL } from "@/lib/academy-data";
 import GatheringMap from "@/components/GatheringMap";
 function asset(url?: string) {
   if (!url) return "";
@@ -173,8 +172,6 @@ export default function Intelligence({
           <Lock size={15} />
           <br />
           {unlocked ? "ACCESS GRANTED" : "MEMBERS ARCHIVE"}
-          <br />
-          <small>四類情報 · 原站資料</small>
         </div>
       </div>
       <div className="intel-panel">
@@ -369,14 +366,6 @@ export default function Intelligence({
               )}
             </>
           )}
-          <a
-            className="intel-source"
-            href={REFERENCE_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            資料來源：毒蛇學院原站 · 2026-09-23 快照 <ExternalLink size={12} />
-          </a>
         </div>
       </div>
       <dialog
