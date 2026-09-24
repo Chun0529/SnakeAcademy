@@ -250,11 +250,13 @@ button {
   letter-spacing: 0.14em;
 }
 .hero-description span {
-  color: #a7aea2;
+  display: block;
+  margin-top: 8px;
+  color: #d5decc;
   font:
-    12px/2 "Noto Sans TC",
+    16px/1.7 "Noto Sans TC",
     sans-serif;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
 }
 .hero-ctas {
   display: flex;
@@ -269,7 +271,7 @@ button {
   padding: 14px 18px;
   background: var(--gold);
   color: #151710;
-  font: 700 11px var(--mono);
+  font: 700 15px var(--mono);
   letter-spacing: 0.08em;
   transition:
     transform 0.2s,
@@ -1239,22 +1241,82 @@ button {
 .console-panel {
   border: 1px solid #8c914666;
   background: #101910ee;
-  padding: 16px 16px 8px;
+  padding: 18px 18px 12px;
   color: #e7ecdf;
 }
-.console-panel > p {
-  margin: 0 0 6px;
+@media (min-width: 901px) {
+  .console-panel {
+    margin-top: 96px;
+  }
+}
+.console-panel > p,
+.console-next > p {
+  margin: 0 0 8px;
   color: #e3d7a2;
-  font: 11px var(--mono);
-  letter-spacing: 0.12em;
+  font: 14px var(--mono);
+  letter-spacing: 0.08em;
+}
+.console-status {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid #52634a;
+  background: #18241b;
+}
+.console-status.is-open {
+  border-color: #b7c49a;
+}
+.console-status.is-done {
+  border-color: #6d6240;
+}
+.console-status b {
+  color: #f4f6ea;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.console-status span,
+.console-next span {
+  color: #d5dec8;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.console-progress {
+  margin-bottom: 8px;
+}
+.console-next {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+.console-next button {
+  min-height: 44px;
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #52634a;
+  background: #152117;
+  color: #f4f6ea;
+  cursor: pointer;
+}
+.console-next button:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+.console-next b {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 16px;
 }
 .console-row {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding: 11px 0;
+  padding: 12px 0;
   border-bottom: 1px solid #314232;
-  font-size: 13px;
+  font-size: 16px;
 }
 .console-row span {
   color: #c9d4bc;
@@ -1315,8 +1377,9 @@ button {
 .hero-news time {
   display: block;
   color: #d0dac4;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.6;
+  text-wrap: pretty;
 }
 .hero-news .is-unread {
   border-color: #c6b16a;
@@ -1325,8 +1388,8 @@ button {
   color: #1a2114;
   background: #d7c27a;
   font-style: normal;
-  font-size: 10px;
-  padding: 2px 6px;
+  font-size: 13px;
+  padding: 3px 7px;
 }
 .crest-mark,
 .intel-gate-symbol,
@@ -2580,17 +2643,26 @@ section[id] {
   flex: 1;
   flex-direction: column;
   gap: 6px;
-  font-size: 12px;
+  font-size: 16px;
 }
 .daily-draw-button small,
 .ten-draw-button small {
-  font: 8px var(--mono);
-  letter-spacing: 0.03em;
-  color: #a2b290;
+  font: 13px var(--mono);
+  letter-spacing: 0.02em;
+  color: #c5d4b4;
+}
+.button-primary:disabled,
+.button-primary:disabled:hover {
+  cursor: default;
+  opacity: 1;
+  transform: none;
+  background: #243026;
+  color: #d7dece;
+  box-shadow: none;
 }
 .daily-draw-button b {
   color: #bdeb88;
-  font: 11px var(--mono);
+  font: 14px var(--mono);
 }
 .ten-draw-button {
   background: linear-gradient(115deg, #342d18, #1f2414);

@@ -250,6 +250,28 @@ export default function Home() {
   const nextMilestone = MILESTONES.find(
     item => ownedCount * 100 < cardTotal * item.percent
   );
+  const collectionComplete = cardTotal > 0 && ownedCount >= cardTotal;
+  const drawLabel = dailyAvailable
+    ? collectionComplete
+      ? "開始今日挑戰"
+      : "領取今日免費抽卡"
+    : collectionComplete
+      ? "今日挑戰已完成"
+      : "今日已抽 · 明日重置";
+  const drawDetail = dailyAvailable
+    ? "今日可用 · 1 張"
+    : "今日已使用 · 台北時間 00:00 重置";
+  const replayCollection = () => {
+    if (
+      !window.confirm(
+        "重玩會清空目前收藏，抽卡紀錄會保留。確定要重新收集嗎？"
+      )
+    )
+      return;
+    const next = { ...ledger, collection: [] };
+    writeLedger(next);
+    setLedger(next);
+  };
   const later = (callback: () => void, delay: number) => {
     const id = setTimeout(callback, delay);
     timers.current.push(id);
@@ -729,24 +751,21 @@ export default function Home() {
                 <em>保持清醒。</em>
               </h1>
               <p className="hero-description">
-                今日先完成一件事。
+                {drawLabel}
                 <span>
-                  {dailyAvailable
-                    ? "免費抽卡尚未領取。"
-                    : "今日免費抽卡已完成。"}
-                  {` 收藏 ${ownedCount}/${cardTotal}。`}
+                  {drawDetail}
+                  {` · 收藏 ${ownedCount}/${cardTotal}`}
                 </span>
               </p>
               <button
                 className="button-primary"
+                disabled={!dailyAvailable || drawBusy}
                 onClick={() => {
                   scrollToId("pack");
-                  if (dailyAvailable) void openPack("daily");
+                  void openPack("daily");
                 }}
               >
-                <span>
-                  {dailyAvailable ? "領取今日免費抽卡" : "進入毒蛇卡包"}
-                </span>
+                <span>{drawLabel}</span>
                 <ArrowRight size={16} />
               </button>
               <div className="quick-grid">
@@ -771,41 +790,61 @@ export default function Home() {
             </div>
             <aside className="console-panel" aria-label="學院狀態">
               <p>今日狀態</p>
-              <div className="console-row">
-                <span>今日任務</span>
-                <b>{dailyAvailable ? "領取免費一抽" : "已完成"}</b>
+              <div className={`console-status ${dailyAvailable ? "is-open" : "is-done"}`}>
+                <b>{drawLabel}</b>
+                <span>{drawDetail}</span>
               </div>
-              <div className="console-row">
-                <span>免費抽卡</span>
-                <b>{dailyAvailable ? "可領取" : "今日已用"}</b>
+              <div className="console-progress">
+                <div className="console-row">
+                  <span>收藏進度</span>
+                  <b>
+                    {ownedCount}/{cardTotal} · {ownedPercent}%
+                  </b>
+                </div>
+                <div
+                  className="console-meter"
+                  role="progressbar"
+                  aria-valuenow={ownedPercent}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuetext={`${ownedCount} / ${cardTotal}`}
+                >
+                  <span style={{ width: `${ownedPercent}%` }} />
+                </div>
               </div>
-              <div className="console-row">
-                <span>收藏進度</span>
-                <b>
-                  {ownedCount}/{cardTotal} · {ownedPercent}%
-                </b>
-              </div>
-              <div
-                className="console-meter"
-                role="progressbar"
-                aria-valuenow={ownedPercent}
-                aria-valuemin={0}
-                aria-valuemax={100}
-              >
-                <span style={{ width: `${ownedPercent}%` }} />
-              </div>
-              <div className="console-row">
-                <span>下一里程</span>
-                <b>
-                  {nextMilestone
-                    ? `${nextMilestone.percent}% ${nextMilestone.title}`
-                    : "全部稱號已解鎖"}
-                </b>
-              </div>
-              <div className="console-row">
-                <span>最新消息</span>
-                <b>{academyNews.find(item => !seenNews.includes(item.id))?.title || academyNews[0].title}</b>
-              </div>
+              {collectionComplete ? (
+                <div className="console-next">
+                  <p>下一個目標</p>
+                  <button type="button" onClick={replayCollection}>
+                    <b>重玩</b>
+                    <span>清空收藏，重新收集 33 張</span>
+                  </button>
+                  <button type="button" onClick={() => setCollectionOpen(true)}>
+                    <b>隱藏檔案</b>
+                    <span>查看已解鎖稱號與完整圖鑑</span>
+                  </button>
+                  <button
+                    type="button"
+                    disabled={!dailyAvailable || drawBusy}
+                    onClick={() => {
+                      scrollToId("pack");
+                      void openPack("daily");
+                    }}
+                  >
+                    <b>每日挑戰</b>
+                    <span>{drawDetail}</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="console-row">
+                  <span>下一里程</span>
+                  <b>
+                    {nextMilestone
+                      ? `${nextMilestone.percent}% ${nextMilestone.title}`
+                      : "全部稱號已解鎖"}
+                  </b>
+                </div>
+              )}
             </aside>
           </div>
           <div className="hero-news" aria-label="學院情報卡片">
@@ -1104,14 +1143,10 @@ export default function Home() {
                 >
                   <Volume2 size={15} />
                   <span>
-                    每日限定免費一抽
-                    <small>
-                      {dailyAvailable
-                        ? "今日可用 · 1 CARD"
-                        : "今日已使用 · 明日重置"}
-                    </small>
+                    {drawLabel}
+                    <small>{drawDetail}</small>
                   </span>
-                  <b>{dailyAvailable ? "FREE" : "USED"}</b>
+                  <b>{dailyAvailable ? "可領取" : "已完成"}</b>
                 </button>
                 <button
                   className="ten-draw-button"
